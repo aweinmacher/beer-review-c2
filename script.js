@@ -11,9 +11,9 @@ function addMat(name, category) {
 }
 
 function renderMats() {
-    $("ul").empty();
+    $(".mats-list").empty();
     for (var mat in mats) {
-        $("ul").append("<li>" + mats[mat].name + ", " + mats[mat].category + "</li>");
+        $(".mats-list").append("<li>" + mats[mat].name + ", " + mats[mat].category + "</li>");
     }
 }
 
