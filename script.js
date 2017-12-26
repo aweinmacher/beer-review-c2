@@ -13,19 +13,35 @@ function addMat(name, category) {
     console.log(mats);
 }
 
+// function sort() {
+//    if(sortclick){
+//        mats.sort(function(a,b) {
+//             return a.rating-b.rating;
+//         });
+//         sortclick=0;
+//    }
+//    else{
+//        mats.sort(function(a,b) {
+//            return b.rating-a.rating;
+//        });
+//        sortclick=1;
+//    }
+//    renderMats();
+//    console.log(mats);
+// }
+
 function sort() {
    if(sortclick){
        mats.sort(function(a,b) {
             return a.rating-b.rating;
         });
-        sortclick=0;
    }
    else{
        mats.sort(function(a,b) {
            return b.rating-a.rating;
        });
-       sortclick=1;
    }
+   sortclick=!sortclick;
    renderMats();
    console.log(mats);
 }
