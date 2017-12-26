@@ -1,49 +1,15 @@
 var mats = [];
-var sortclick = 0;
+var sortclick = 1;
 
-function addMat(name, category) {
-    var rating = $(".rating").val();
+function addMat(name, category, rating) {
     mats.push(
         {
-            "name": name,
-            "category": category,
-            "rating": rating
+            name: name,
+            category: category,
+            rating: rating
         }
     );
     console.log(mats);
-}
-
-// function sort() {
-//    if(sortclick){
-//        mats.sort(function(a,b) {
-//             return a.rating-b.rating;
-//         });
-//         sortclick=0;
-//    }
-//    else{
-//        mats.sort(function(a,b) {
-//            return b.rating-a.rating;
-//        });
-//        sortclick=1;
-//    }
-//    renderMats();
-//    console.log(mats);
-// }
-
-function sort() {
-   if(sortclick){
-       mats.sort(function(a,b) {
-            return a.rating-b.rating;
-        });
-   }
-   else{
-       mats.sort(function(a,b) {
-           return b.rating-a.rating;
-       });
-   }
-   sortclick=!sortclick;
-   renderMats();
-   console.log(mats);
 }
 
 function renderMats() {
@@ -52,12 +18,20 @@ function renderMats() {
         $(".mats-list").append("<li><h4>" + mats[mat].name + ", " + mats[mat].category + ", rating: " + mats[mat].rating + "</h4></li>");
     }
 }
-
-$(".post-mat").click(function () {
-    addMat($(".mat-input").val(), $(".category-input").val());
+function postMat() {
+    addMat($(".mat-input").val(), $(".category-input").val(), $(".rating").val());
     $(".mat-input").val('');
     $(".category-input").val('');
+    $(".rating").val('1')
     renderMats();
-})
+}
+function sort() {
+    mats.sort(function(a,b) {
+             return (b.rating-a.rating)*sortclick;
+         });
+    sortclick=sortclick*(-1);
+    renderMats();
+ }
 
+$(".post-mat").click(postMat);
 $(".sort").click(sort);
