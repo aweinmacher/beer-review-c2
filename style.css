@@ -5,3 +5,7 @@ form {
 .user-post, .user-review {
   font-weight: bold;
 }
+
+.rating li{
+  padding-left: 10px;
+}
