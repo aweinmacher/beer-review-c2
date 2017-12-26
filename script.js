@@ -14,19 +14,20 @@ function addMat(name, category) {
 }
 
 function sort() {
-   if(sortclick%2===0){
+   if(sortclick){
        mats.sort(function(a,b) {
-            return b.rating-a.rating;
+            return a.rating-b.rating;
         });
+        sortclick=0;
    }
    else{
        mats.sort(function(a,b) {
-           return a.rating-b.rating;
+           return b.rating-a.rating;
        });
+       sortclick=1;
    }
    renderMats();
    console.log(mats);
-   sortclick++;
 }
 
 function renderMats() {
